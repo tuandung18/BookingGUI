@@ -1,9 +1,5 @@
 #include "booking.h"
 
-Booking::Booking()
-{
-
-}
 
 std::string Booking::showDetails()
 {

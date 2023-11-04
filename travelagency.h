@@ -8,7 +8,7 @@ class TravelAgency
 public:
     TravelAgency();
 private:
-    std::shared_ptr<std::vector<Booking>> bookings;
+    std::vector<std::shared_ptr<Booking>> bookings;
 };
 
 #endif // TRAVELAGENCY_H

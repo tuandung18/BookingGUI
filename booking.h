@@ -8,7 +8,7 @@ public:
     Booking(const std::string &id, double price, const std::string &toDate, const std::string &fromDate);
     virtual std::string showDetails() = 0;
     virtual ~Booking();
-private:
+protected:
     std::string id;
     double price;
     std::string toDate;
