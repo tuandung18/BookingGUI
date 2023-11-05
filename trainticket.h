@@ -1,22 +1,23 @@
 #ifndef TRAINTICKET_H
 #define TRAINTICKET_H
+#include "QtCore/qjsonarray.h"
 #include <booking.h>
 #include <memory>
 #include <vector>
-class TrainTicket: public Booking
-{
+class TrainTicket : public Booking {
 public:
-
 private:
-    QString fromDest, toDest, departureTime, arrivalTime;
-    std::vector<QString> connectingStations;
+  QString fromDest, toDest, departureTime, arrivalTime;
+  QJsonArray connectingStations;
 
-
-    // Booking interface
+  // Booking interface
 public:
-    TrainTicket(const QString &fromDest, const QString &toDest, const QString &departureTime, const QString &arrivalTime, const std::vector<QString> &connectingStations, const QString &id, double price, const QString &toDate, const QString &fromDate);
-    QString showDetails() override;
-    QString printStations();
+  TrainTicket(const QString &fromDest, const QString &toDest,
+              const QString &departureTime, const QString &arrivalTime,
+              const QJsonArray &connectingStations, const QString &id,
+              double price, const QString &toDate, const QString &fromDate);
+  QString showDetails() override;
+  QString printStations();
 };
 
 #endif // TRAINTICKET_H

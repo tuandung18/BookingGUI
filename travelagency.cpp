@@ -1,42 +1,60 @@
 #include "travelagency.h"
-#include <flightbooking.h>
-#include <QJsonDocument>
-#include <QJsonArray>
+#include "hotelbooking.h"
+#include "rentalcarreservation.h"
+#include "trainticket.h"
+#include <QVector>
 #include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
 #include <QJsonObject>
+#include <flightbooking.h>
 #include <iostream>
 using namespace std;
 
-TravelAgency::TravelAgency()
-{
+TravelAgency::TravelAgency() {}
 
+void TravelAgency::readFile(QString path) {
+  QFile file(path);
+  if (!file.open(QIODevice::ReadOnly))
+    std::cerr << "Datei  konnte nicht geoeffnet werden";
+  QByteArray fileContent = file.readAll();
+  file.close();
+
+  QJsonParseError jsonError;
+  QJsonDocument doc = QJsonDocument::fromJson(fileContent, &jsonError);
+
+  if (jsonError.error != QJsonParseError::NoError)
+    cerr << "fromJson failed" << jsonError.errorString().toStdString() << endl;
+
+  QJsonArray bookings = doc.array();
+  for (const auto &element : bookings) {
+    auto booking = createBooking(element.toObject());
+  }
 }
 
-void TravelAgency::readFile(QString path)
-{
-    QFile file (path);
-    if (!file.open(QIODevice::ReadOnly)) std::cerr << "Datei  konnte nicht geoeffnet werden";
-    QByteArray fileContent = file.readAll();
-    file.close();
-
-    QJsonParseError jsonError;
-    QJsonDocument doc = QJsonDocument::fromJson(fileContent, &jsonError);
-
-    if(jsonError.error != QJsonParseError::NoError)
-        cerr << "fromJson failed" << jsonError.errorString().toStdString() << endl;
-
-    QJsonArray bookings = doc.array();
-    for (const auto& element : bookings){
-        auto booking= createBooking(element.toObject());
-
-
-    }
-}
-
-QSharedPointer<Booking> TravelAgency::createBooking(QJsonObject obj)
-{
-    if(obj["Type"].toString() == "Flight")
-        return new FlightBooking(obj["fromDest"], obj["toDest"], obj["airline"],
-                                 obj["id"], obj["price"], obj["toDate"],
-                                 obj["fromDate"]);
+QSharedPointer<Booking> TravelAgency::createBooking(QJsonObject obj) {
+  if (obj["Type"].toString() == "Flight")
+    return QSharedPointer<FlightBooking>(
+        new FlightBooking(obj["fromDest"].toString(), obj["toDest"].toString(),
+                          obj["airline"].toString(), obj["id"].toString(),
+                          obj["price"].toDouble(), obj["toDate"].toString(),
+                          obj["fromDate"].toString()));
+  else if (obj["Type"].toString() == "Hotel")
+    return QSharedPointer<HotelBooking>(
+        new HotelBooking(obj["hotel"].toString(), obj["town"].toString(),
+                         obj["id"].toString(), obj["price"].toDouble(),
+                         obj["toDate"].toString(), obj["fromDate"].toString()));
+  else if (obj["Type"].toString() == "RentalCar")
+    return QSharedPointer<RentalCarReservation>(new RentalCarReservation(
+        obj["pickupLocation"].toString(), obj["returnLocation"].toString(),
+        obj["company"].toString(), obj["id"].toString(),
+        obj["price"].toDouble(), obj["toDate"].toString(),
+        obj["fromDate"].toString()));
+  else if (obj["Type"].toString() == "Train")
+    return QSharedPointer<TrainTicket>(new TrainTicket(
+        obj["fromStation"].toString(), obj["toStation"].toString(),
+        obj["departureTime"].toString(), obj["arrivalTime"].toString(),
+        obj["connectionStation"].toArray(), obj["id"].toString(),
+        obj["price"].toDouble(), obj["toDate"].toString(),
+        obj["fromDate"].toString()));
 }

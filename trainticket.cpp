@@ -13,7 +13,7 @@ QString TrainTicket::printStations()
 {
     QString stations{};
     for (const auto& station : connectingStations)
-        stations += station + ", ";
+        stations += station.toString() + ", ";
     return stations;
 }
 
@@ -21,7 +21,7 @@ QString TrainTicket::printStations()
 TrainTicket::TrainTicket(const QString &fromDest, const QString &toDest,
                          const QString &departureTime,
                          const QString &arrivalTime,
-                         const std::vector<QString> &connectingStations,
+                         const QJsonArray &connectingStations,
                          const QString &id, double price,
                          const QString &toDate, const QString &fromDate)
     : Booking(id, price, toDate, fromDate), fromDest(fromDest), toDest(toDest),
