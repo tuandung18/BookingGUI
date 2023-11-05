@@ -7,13 +7,13 @@ class RentalCarReservation : public Booking
 {
 public:
 private:
-    std::string pickupLocation, returnLocation, company;
+    QString pickupLocation, returnLocation, company;
 
 
     // Booking interface
 public:
-    RentalCarReservation(const std::string &pickupLocation, const std::string &returnLocation, const std::string &company, const std::string &id, double price, const std::string &toDate, const std::string &fromDate);
-    std::string showDetails() override;
+    RentalCarReservation(const QString &pickupLocation, const QString &returnLocation, const QString &company, const QString &id, double price, const QString &toDate, const QString &fromDate);
+    QString showDetails() override;
 };
 
 #endif // RENTALCARRESERVATION_H

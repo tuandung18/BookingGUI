@@ -1,12 +1,11 @@
 #include "booking.h"
+#include <iostream>
+#include <ostream>
 
 
-std::string Booking::showDetails()
-{
 
-}
 
-Booking::Booking(const std::string &id, double price, const std::string &toDate, const std::string &fromDate) : id(id),
+Booking::Booking(const QString &id, double price, const QString &toDate, const QString &fromDate) : id(id),
     price(price),
     toDate(toDate),
     fromDate(fromDate)

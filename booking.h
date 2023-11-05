@@ -1,18 +1,20 @@
 #ifndef BOOKING_H
 #define BOOKING_H
 #include <string>
-
+#include <QString>
+#include <QDebug>
+#include <QTextStream>
 class Booking
 {
 public:
-    Booking(const std::string &id, double price, const std::string &toDate, const std::string &fromDate);
-    virtual std::string showDetails() = 0;
+    Booking(const QString &id, double price, const QString &toDate, const QString &fromDate);
+    virtual QString showDetails() = 0;
     virtual ~Booking();
 protected:
-    std::string id;
+    QString id;
     double price;
-    std::string toDate;
-    std::string fromDate;
+    QString toDate;
+    QString fromDate;
 
 
 };

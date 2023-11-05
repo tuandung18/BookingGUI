@@ -6,14 +6,14 @@
 class HotelBooking : public Booking
 {
 public:
-    HotelBooking(const std::string &hotel, const std::string &town, const std::string &id, double price, const std::string &toDate, const std::string &fromDate);
+    HotelBooking(const QString &hotel, const QString &town, const QString &id, double price, const QString &toDate, const QString &fromDate);
 
 private:
-    std::string hotel, town;
+    QString hotel, town;
 
     // Booking interface
 public:
-    std::string showDetails() override;
+    QString showDetails() override;
 };
 
 #endif // HOTELBOOKING_H

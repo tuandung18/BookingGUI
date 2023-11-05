@@ -2,14 +2,13 @@
 #include <iostream>
 using namespace std;
 
+HotelBooking::HotelBooking(const QString &hotel, const QString &town,
+                           const QString &id, double price,
+                           const QString &toDate, const QString &fromDate)
+    : Booking(id, price, toDate, fromDate), hotel(hotel), town(town) {}
 
-HotelBooking::HotelBooking(const std::string &hotel, const std::string &town, const std::string &id, double price, const std::string &toDate, const std::string &fromDate) : Booking(id, price, toDate, fromDate),
-    hotel(hotel),
-    town(town)
-{}
-
-std::string HotelBooking::showDetails() {
-  cout << "Hotelreservierung im " << hotel << " in " << town << " vom "
-       << fromDate << " bis zum " << toDate << ". Preis: " << price << " Euro"
+QString HotelBooking::showDetails() {
+  cout << "Hotelreservierung im " << hotel.toStdString() << " in " << town.toStdString() << " vom "
+       << fromDate.toStdString() << " bis zum " << toDate.toStdString() << ". Preis: " << price << " Euro"
        << endl;
 }

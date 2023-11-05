@@ -8,14 +8,15 @@ class TrainTicket: public Booking
 public:
 
 private:
-    std::string fromDest, toDest, departureTime, arrivalTime;
-    std::vector<std::string> connectingStations;
+    QString fromDest, toDest, departureTime, arrivalTime;
+    std::vector<QString> connectingStations;
 
 
     // Booking interface
 public:
-    TrainTicket(const std::string &fromDest, const std::string &toDest, const std::string &departureTime, const std::string &arrivalTime, const std::vector<std::string> &connectingStations, const std::string &id, double price, const std::string &toDate, const std::string &fromDate);
-    std::string showDetails() override;
+    TrainTicket(const QString &fromDest, const QString &toDest, const QString &departureTime, const QString &arrivalTime, const std::vector<QString> &connectingStations, const QString &id, double price, const QString &toDate, const QString &fromDate);
+    QString showDetails() override;
+    QString printStations();
 };
 
 #endif // TRAINTICKET_H

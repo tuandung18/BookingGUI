@@ -1,18 +1,20 @@
 #ifndef FLIGHTBOOKING_H
 #define FLIGHTBOOKING_H
-
 #include "booking.h"
+#include <iostream>
 
 class FlightBooking : public Booking {
 
 public:
 private:
-    std::string fromDest, toDest, airline;
+    QString fromDest, toDest, airline;
 
     // Booking interface
 public:
-    FlightBooking(const std::string &fromDest, const std::string &toDest, const std::string &airline, const std::string &id, double price, const std::string &toDate, const std::string &fromDate);
-    std::string showDetails() override;
+  FlightBooking(const QString &fromDest, const QString &toDest,
+                const QString &airline, const QString &id, double price,
+                const QString &toDate, const QString &fromDate);
+  QString showDetails() override;
 };
 
 #endif // FLIGHTBOOKING_H
