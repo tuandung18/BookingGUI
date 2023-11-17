@@ -14,31 +14,39 @@ using namespace std;
 TravelAgency::TravelAgency() {}
 
 void TravelAgency::readFile(QString path) {
-  QFile file(path);
-  if (!file.open(QIODevice::ReadOnly))
-    std::cerr << "Datei  konnte nicht geoeffnet werden";
-  QByteArray fileContent = file.readAll();
-  file.close();
+    QFile file(path);
+    QByteArray fileContent;
+    try{
+        file.open(QIODevice::ReadOnly);
+        fileContent = file.readAll();
+        file.close();
+    }catch (const std::exception& e) {
+        qDebug() << "Exception: " << e.what();
+    }
 
+  //Error checking for parser
   QJsonParseError jsonError;
   QJsonDocument doc = QJsonDocument::fromJson(fileContent, &jsonError);
 
   if (jsonError.error != QJsonParseError::NoError)
     cerr << "fromJson failed" << jsonError.errorString().toStdString() << endl;
 
-  QJsonArray bookings = doc.array();
-  for (const auto &element : bookings) {
+  QJsonArray inputs = doc.array();
+  for (const auto &element : inputs) {
     auto booking = createBooking(element.toObject());
+    bookings.push_back(booking);
   }
+  std::cout<<"";
 }
 
 QSharedPointer<Booking> TravelAgency::createBooking(QJsonObject obj) {
-  if (obj["Type"].toString() == "Flight")
+  if (obj["type"].toString().toStdString() == "Flight"){
     return QSharedPointer<FlightBooking>(
         new FlightBooking(obj["fromDest"].toString(), obj["toDest"].toString(),
                           obj["airline"].toString(), obj["id"].toString(),
                           obj["price"].toDouble(), obj["toDate"].toString(),
                           obj["fromDate"].toString()));
+  }
   else if (obj["Type"].toString() == "Hotel")
     return QSharedPointer<HotelBooking>(
         new HotelBooking(obj["hotel"].toString(), obj["town"].toString(),

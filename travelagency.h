@@ -12,7 +12,7 @@ public:
     void readFile(QString path);
     QSharedPointer<Booking> createBooking(QJsonObject obj);
 private:
-    std::vector<std::shared_ptr<Booking>> bookings;
+    QVector<QSharedPointer<Booking>> bookings;
 };
 
 #endif // TRAVELAGENCY_H
