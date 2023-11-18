@@ -11,6 +11,8 @@ public:
     TravelAgency();
     void readFile(QString path);
     QSharedPointer<Booking> createBooking(QJsonObject obj);
+    void createFlight(QJsonObject obj);
+
 private:
     QVector<QSharedPointer<Booking>> bookings;
 };
