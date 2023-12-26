@@ -3,10 +3,10 @@
 using namespace std;
 
 QString TrainTicket::showDetails() {
-  cout << "Zugticket from " << fromDest.toStdString() << " nach " << toDest.toStdString() << " am "
-       << fromDate.toStdString() << " von " << departureTime.toStdString()<< " bis " << arrivalTime.toStdString()
-       << " über " << printStations().toStdString() << ". Preis: " << price << " Euro"
-       << endl;
+  return QString("Zugticket from " + fromDest + " nach " + toDest + " am "
+       + fromDate + " von " + departureTime + " bis " + arrivalTime
+                   + " über " + printStations() + ". Preis: " + QString::fromStdString(to_string(price)) + " Euro"
+                   );
 }
 
 QString TrainTicket::printStations()

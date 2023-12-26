@@ -12,7 +12,7 @@ FlightBooking::FlightBooking(const QString &fromDest,
       airline(airline) {}
 
 QString FlightBooking::showDetails() {
-  std::cout << "Flugbuchung von " << fromDest.toStdString() << " nach " << toDest.toStdString() << " mit "
-            << airline.toStdString() << " am " << fromDate.toStdString() << ". Preis: " << price << " Euro"
-            << endl;
+  return QString("Flugbuchung von " + fromDest + " nach " + toDest + " mit "
+                   + airline + " am " + fromDate + ". Preis: " + QString::fromStdString(to_string(price)) + " Euro"
+                   );
 }

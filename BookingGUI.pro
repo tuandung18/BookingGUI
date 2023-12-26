@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     booking.cpp \
+    editor.cpp \
     flightbooking.cpp \
     hotelbooking.cpp \
     main.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 
 HEADERS += \
     booking.h \
+    editor.h \
     flightbooking.h \
     hotelbooking.h \
     menu.h \
@@ -28,6 +30,7 @@ HEADERS += \
     travelagency.h
 
 FORMS += \
+    editor.ui \
     menu.ui
 
 # Default rules for deployment.

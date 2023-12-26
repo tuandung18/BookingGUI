@@ -10,6 +10,8 @@ public:
     Booking(const QString &id, double price, const QString &toDate, const QString &fromDate);
     virtual QString showDetails() = 0;
     virtual ~Booking();
+    QString getId() const;
+
 protected:
     QString id;
     double price;
