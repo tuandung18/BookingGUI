@@ -20,3 +20,4 @@ QString Booking::getId() const
 {
     return id;
 }
+

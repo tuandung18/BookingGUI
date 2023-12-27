@@ -12,3 +12,9 @@ QString HotelBooking::showDetails() {
         + fromDate + " bis zum " + toDate + ". Preis: " + QString::fromStdString(to_string(price)) + " Euro"
                    );
 }
+
+
+BookingType HotelBooking::whoami() const
+{
+    return BookingType::Hotel;
+}

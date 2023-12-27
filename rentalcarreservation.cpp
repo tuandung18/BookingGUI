@@ -13,3 +13,5 @@ RentalCarReservation::RentalCarReservation(const QString &pickupLocation, const 
     returnLocation(returnLocation),
     company(company)
 {}
+
+BookingType RentalCarReservation::whoami() const { return BookingType::Car; }

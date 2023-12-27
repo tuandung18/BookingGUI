@@ -14,6 +14,10 @@ private:
     // Booking interface
 public:
     QString showDetails() override;
+
+    // Booking interface
+public:
+    BookingType whoami() const override;
 };
 
 #endif // HOTELBOOKING_H

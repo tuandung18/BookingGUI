@@ -1,24 +1,25 @@
 #ifndef BOOKING_H
 #define BOOKING_H
-#include <string>
-#include <QString>
 #include <QDebug>
+#include <QString>
 #include <QTextStream>
-class Booking
-{
+#include <string>
+enum BookingType { Flight, Car, Hotel, Train, Size };
+
+class Booking {
 public:
-    Booking(const QString &id, double price, const QString &toDate, const QString &fromDate);
-    virtual QString showDetails() = 0;
-    virtual ~Booking();
-    QString getId() const;
+  Booking(const QString &id, double price, const QString &toDate,
+          const QString &fromDate);
+  virtual QString showDetails() = 0;
+  virtual ~Booking();
+  QString getId() const;
+  virtual BookingType whoami() const = 0;
 
 protected:
-    QString id;
-    double price;
-    QString toDate;
-    QString fromDate;
-
-
+  QString id;
+  double price;
+  QString toDate;
+  QString fromDate;
 };
 
 #endif // BOOKING_H

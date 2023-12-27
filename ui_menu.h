@@ -10,6 +10,7 @@
 #define UI_MENU_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QListWidget>
@@ -26,13 +27,12 @@ class Ui_Menu
 {
 public:
     QWidget *centralwidget;
-    QWidget *widget;
-    QHBoxLayout *horizontalLayout;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_2;
-    QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_2;
     QPushButton *readFile;
     QPushButton *showBookings;
-    QSpacerItem *verticalSpacer;
+    QSpacerItem *horizontalSpacer_2;
     QListWidget *bookingOutput;
     QStatusBar *statusbar;
 
@@ -43,41 +43,40 @@ public:
         Menu->resize(976, 600);
         centralwidget = new QWidget(Menu);
         centralwidget->setObjectName("centralwidget");
-        widget = new QWidget(centralwidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(40, 30, 891, 298));
-        horizontalLayout = new QHBoxLayout(widget);
-        horizontalLayout->setObjectName("horizontalLayout");
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        verticalLayout_2 = new QVBoxLayout();
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(50, 30, 881, 481));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setObjectName("verticalLayout_2");
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName("verticalLayout");
-        readFile = new QPushButton(widget);
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        readFile = new QPushButton(layoutWidget);
         readFile->setObjectName("readFile");
+        readFile->setMinimumSize(QSize(130, 0));
+        QIcon icon(QIcon::fromTheme(QString::fromUtf8("folder-open")));
+        readFile->setIcon(icon);
 
-        verticalLayout->addWidget(readFile);
+        horizontalLayout_2->addWidget(readFile);
 
-        showBookings = new QPushButton(widget);
+        showBookings = new QPushButton(layoutWidget);
         showBookings->setObjectName("showBookings");
+        showBookings->setMinimumSize(QSize(130, 0));
         showBookings->setFlat(false);
 
-        verticalLayout->addWidget(showBookings);
+        horizontalLayout_2->addWidget(showBookings);
+
+        horizontalSpacer_2 = new QSpacerItem(278, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_2);
 
 
-        verticalLayout_2->addLayout(verticalLayout);
+        verticalLayout_2->addLayout(horizontalLayout_2);
 
-        verticalSpacer = new QSpacerItem(20, 218, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_2->addItem(verticalSpacer);
-
-
-        horizontalLayout->addLayout(verticalLayout_2);
-
-        bookingOutput = new QListWidget(widget);
+        bookingOutput = new QListWidget(layoutWidget);
         bookingOutput->setObjectName("bookingOutput");
 
-        horizontalLayout->addWidget(bookingOutput);
+        verticalLayout_2->addWidget(bookingOutput);
 
         Menu->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(Menu);
@@ -93,7 +92,10 @@ public:
     {
         Menu->setWindowTitle(QCoreApplication::translate("Menu", "Menu", nullptr));
         readFile->setText(QCoreApplication::translate("Menu", "Read File", nullptr));
-        showBookings->setText(QCoreApplication::translate("Menu", "Show bookings", nullptr));
+#if QT_CONFIG(shortcut)
+        readFile->setShortcut(QCoreApplication::translate("Menu", "Ctrl+I", nullptr));
+#endif // QT_CONFIG(shortcut)
+        showBookings->setText(QCoreApplication::translate("Menu", "Show ", nullptr));
     } // retranslateUi
 
 };

@@ -15,6 +15,10 @@ public:
                 const QString &airline, const QString &id, double price,
                 const QString &toDate, const QString &fromDate);
   QString showDetails() override;
+
+  // Booking interface
+  public:
+  BookingType whoami() const override;
 };
 
 #endif // FLIGHTBOOKING_H

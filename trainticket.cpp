@@ -27,3 +27,9 @@ TrainTicket::TrainTicket(const QString &fromDest, const QString &toDest,
     : Booking(id, price, toDate, fromDate), fromDest(fromDest), toDest(toDest),
       departureTime(departureTime), arrivalTime(arrivalTime),
       connectingStations(connectingStations) {}
+
+
+BookingType TrainTicket::whoami() const
+{
+    return BookingType::Train;
+}

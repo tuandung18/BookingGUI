@@ -18,6 +18,10 @@ public:
               double price, const QString &toDate, const QString &fromDate);
   QString showDetails() override;
   QString printStations();
+
+  // Booking interface
+  public:
+  BookingType whoami() const override;
 };
 
 #endif // TRAINTICKET_H

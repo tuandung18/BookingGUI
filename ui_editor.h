@@ -454,7 +454,7 @@ public:
 
         retranslateUi(Editor);
 
-        Editor->setCurrentIndex(0);
+        Editor->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Editor);
@@ -462,7 +462,7 @@ public:
 
     void retranslateUi(QTabWidget *Editor)
     {
-        Editor->setWindowTitle(QCoreApplication::translate("Editor", "TabWidget", nullptr));
+        Editor->setWindowTitle(QCoreApplication::translate("Editor", "Booking Information", nullptr));
         label_22->setText(QCoreApplication::translate("Editor", "ID", nullptr));
         label_23->setText(QCoreApplication::translate("Editor", "von", nullptr));
         label_24->setText(QCoreApplication::translate("Editor", "bis", nullptr));

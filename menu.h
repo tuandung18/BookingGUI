@@ -4,7 +4,7 @@
 #include "QtWidgets/qlistwidget.h"
 #include "travelagency.h"
 #include <QMainWindow>
-
+#include <iostream>
 QT_BEGIN_NAMESPACE
 namespace Ui { class Menu; }
 QT_END_NAMESPACE
@@ -28,5 +28,6 @@ private:
     Ui::Menu *ui;
     TravelAgency* agency;
     QVector<QSharedPointer<Booking>> bookings;
+    const int NUMBEROFTYPE = BookingType::Size;
 };
 #endif // MENU_H

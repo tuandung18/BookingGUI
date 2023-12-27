@@ -16,3 +16,9 @@ QString FlightBooking::showDetails() {
                    + airline + " am " + fromDate + ". Preis: " + QString::fromStdString(to_string(price)) + " Euro"
                    );
 }
+
+
+BookingType FlightBooking::whoami() const
+{
+  return BookingType::Flight;
+}
