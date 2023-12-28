@@ -1,4 +1,5 @@
 #include "menu.h"
+#include "flightbooking.h"
 #include "ui_menu.h"
 #include <QFileDialog>
 #include <QListWidget>
@@ -37,32 +38,6 @@ void Menu::on_bookingOutput_itemDoubleClicked(QListWidgetItem *item) {
     auto editor = new Editor;
     QSharedPointer<Booking> booking =
         agency->findBooking(qvariant_cast<QString>(item->data(Qt::UserRole)));
-
-    //Display tab
-    switch (booking->whoami()) {
-    case BookingType::Flight:
-        editor->setCurrentIndex(0);
-        break;
-    case BookingType::Car:
-        editor->setCurrentIndex(1);
-        break;
-    case BookingType::Hotel:
-        editor->setCurrentIndex(2);
-        break;
-    case BookingType::Train:
-        editor->setCurrentIndex(3);
-        break;
-    default:
-        break;
-    }
-    int index = editor->currentIndex();
-    //Make unused tabs invisible
-    for(int i = 0; i < editor->count(); i++){
-        if (i != index)
-            editor->setTabVisible(i,false);
-    }
-
-    //Bind properties
-    auto curTab = editor->widget(index);
+    editor->displayTab(booking);
     editor->show();
 }

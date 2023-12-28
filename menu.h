@@ -3,6 +3,7 @@
 
 #include "QtWidgets/qlistwidget.h"
 #include "travelagency.h"
+#include "ui_editor.h"
 #include <QMainWindow>
 #include <iostream>
 QT_BEGIN_NAMESPACE
@@ -26,6 +27,7 @@ private slots:
 
 private:
     Ui::Menu *ui;
+    Ui::Editor *tabUi;
     TravelAgency* agency;
     QVector<QSharedPointer<Booking>> bookings;
     const int NUMBEROFTYPE = BookingType::Size;

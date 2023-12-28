@@ -15,6 +15,10 @@ public:
   QString getId() const;
   virtual BookingType whoami() const = 0;
 
+  double getPrice() const;
+  QString getToDate() const;
+  QString getFromDate() const;
+
 protected:
   QString id;
   double price;

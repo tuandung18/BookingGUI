@@ -18,6 +18,8 @@ public:
     // Booking interface
 public:
     BookingType whoami() const override;
+    QString getHotel() const;
+    QString getTown() const;
 };
 
 #endif // HOTELBOOKING_H

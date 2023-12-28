@@ -19,6 +19,9 @@ public:
   // Booking interface
   public:
   BookingType whoami() const override;
+  QString getFromDest() const;
+  QString getToDest() const;
+  QString getAirline() const;
 };
 
 #endif // FLIGHTBOOKING_H

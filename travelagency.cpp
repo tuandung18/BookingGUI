@@ -62,7 +62,7 @@ QSharedPointer<Booking> TravelAgency::createBooking(QJsonObject obj) {
     return QSharedPointer<TrainTicket>(new TrainTicket(
         obj["fromStation"].toString(), obj["toStation"].toString(),
         obj["departureTime"].toString(), obj["arrivalTime"].toString(),
-        obj["connectionStation"].toArray(), obj["id"].toString(),
+        obj["connectingStations"].toArray(), obj["id"].toString(),
         obj["price"].toDouble(), obj["toDate"].toString(),
         obj["fromDate"].toString()));
 }

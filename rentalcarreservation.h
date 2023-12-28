@@ -18,6 +18,9 @@ public:
     // Booking interface
 public:
     BookingType whoami() const override;
+    QString getPickupLocation() const;
+    QString getReturnLocation() const;
+    QString getCompany() const;
 };
 
 #endif // RENTALCARRESERVATION_H

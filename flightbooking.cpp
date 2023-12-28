@@ -3,6 +3,21 @@
 
 using namespace std;
 
+QString FlightBooking::getFromDest() const
+{
+    return fromDest;
+}
+
+QString FlightBooking::getToDest() const
+{
+    return toDest;
+}
+
+QString FlightBooking::getAirline() const
+{
+    return airline;
+}
+
 FlightBooking::FlightBooking(const QString &fromDest,
                              const QString &toDest,
                              const QString &airline, const QString &id,

@@ -7,6 +7,16 @@ HotelBooking::HotelBooking(const QString &hotel, const QString &town,
                            const QString &toDate, const QString &fromDate)
     : Booking(id, price, toDate, fromDate), hotel(hotel), town(town) {}
 
+QString HotelBooking::getHotel() const
+{
+    return hotel;
+}
+
+QString HotelBooking::getTown() const
+{
+    return town;
+}
+
 QString HotelBooking::showDetails() {
     return QString("Hotelreservierung im " + hotel + " in " + town + " vom "
         + fromDate + " bis zum " + toDate + ". Preis: " + QString::fromStdString(to_string(price)) + " Euro"

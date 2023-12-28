@@ -8,6 +8,21 @@ return QString("Mietwagenreservierung mit " + company + ". Abholung am "
             + " in " + returnLocation + ". Preis: " + QString::fromStdString(to_string(price)) + " Euro");
 }
 
+QString RentalCarReservation::getPickupLocation() const
+{
+return pickupLocation;
+}
+
+QString RentalCarReservation::getReturnLocation() const
+{
+return returnLocation;
+}
+
+QString RentalCarReservation::getCompany() const
+{
+return company;
+}
+
 RentalCarReservation::RentalCarReservation(const QString &pickupLocation, const QString &returnLocation, const QString &company, const QString &id, double price, const QString &toDate, const QString &fromDate) : Booking(id, price, toDate, fromDate),
     pickupLocation(pickupLocation),
     returnLocation(returnLocation),

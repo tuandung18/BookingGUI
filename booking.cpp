@@ -21,3 +21,18 @@ QString Booking::getId() const
     return id;
 }
 
+double Booking::getPrice() const
+{
+    return price;
+}
+
+QString Booking::getToDate() const
+{
+    return toDate;
+}
+
+QString Booking::getFromDate() const
+{
+    return fromDate;
+}
+

@@ -9,7 +9,7 @@ public:
 private:
   QString fromDest, toDest, departureTime, arrivalTime;
   QJsonArray connectingStations;
-
+  QVector<QString> stations;
   // Booking interface
 public:
   TrainTicket(const QString &fromDest, const QString &toDest,
@@ -22,6 +22,11 @@ public:
   // Booking interface
   public:
   BookingType whoami() const override;
+  QString getFromDest() const;
+  QString getToDest() const;
+  QString getDepartureTime() const;
+  QString getArrivalTime() const;
+  QVector<QString> &getStations();
 };
 
 #endif // TRAINTICKET_H
