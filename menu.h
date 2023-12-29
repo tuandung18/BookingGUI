@@ -29,7 +29,7 @@ private:
     Ui::Menu *ui;
     Ui::Editor *tabUi;
     TravelAgency* agency;
-    QVector<QSharedPointer<Booking>> bookings;
+    QVector<QSharedPointer<Booking>> allBookings;
     const int NUMBEROFTYPE = BookingType::Size;
 };
 #endif // MENU_H

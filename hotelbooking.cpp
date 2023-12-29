@@ -4,8 +4,13 @@ using namespace std;
 
 HotelBooking::HotelBooking(const QString &hotel, const QString &town,
                            const QString &id, double price,
-                           const QString &toDate, const QString &fromDate)
-    : Booking(id, price, toDate, fromDate), hotel(hotel), town(town) {}
+                           const QString &toDate, const QString &fromDate, const QString &roomType)
+    : Booking(id, price, toDate, fromDate), hotel(hotel), town(town), roomType(roomType) {}
+
+QString HotelBooking::getRoomType() const
+{
+    return roomType;
+}
 
 QString HotelBooking::getHotel() const
 {

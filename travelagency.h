@@ -1,5 +1,7 @@
 #ifndef TRAVELAGENCY_H
 #define TRAVELAGENCY_H
+#include "customer.h"
+#include "travel.h"
 #include <QString>
 #include <QSharedMemory>
 #include <memory>
@@ -15,9 +17,18 @@ public:
     QVector<QSharedPointer<Booking> > &getBookings();
     void printBookings() const;
     QSharedPointer<Booking> findBooking(QString id);
+    QSharedPointer<Travel> findTravel(long id);
+    QSharedPointer<Customer> findCustomer(long id);
+
+    QVector<QSharedPointer<Travel> > &getAllTravels() ;
+
+    QVector<QSharedPointer<Customer> > &getAllCustomers() ;
+
 
 private:
-    QVector<QSharedPointer<Booking>> bookings;
+    QVector<QSharedPointer<Booking>> allBookings;
+    QVector<QSharedPointer<Travel>> allTravels;
+    QVector<QSharedPointer<Customer>> allCustomers;
 };
 
 #endif // TRAVELAGENCY_H

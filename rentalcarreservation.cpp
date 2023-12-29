@@ -23,10 +23,16 @@ QString RentalCarReservation::getCompany() const
 return company;
 }
 
-RentalCarReservation::RentalCarReservation(const QString &pickupLocation, const QString &returnLocation, const QString &company, const QString &id, double price, const QString &toDate, const QString &fromDate) : Booking(id, price, toDate, fromDate),
+QString RentalCarReservation::getVehicleClass() const
+{
+return vehicleClass;
+}
+
+RentalCarReservation::RentalCarReservation(const QString &pickupLocation, const QString &returnLocation, const QString &company, const QString &id, double price, const QString &toDate, const QString &fromDate, const QString vehicleClass) : Booking(id, price, toDate, fromDate),
     pickupLocation(pickupLocation),
     returnLocation(returnLocation),
-    company(company)
+    company(company),
+    vehicleClass(vehicleClass)
 {}
 
 BookingType RentalCarReservation::whoami() const { return BookingType::Car; }

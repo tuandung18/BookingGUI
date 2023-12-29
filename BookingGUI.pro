@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     booking.cpp \
+    customer.cpp \
     editor.cpp \
     flightbooking.cpp \
     hotelbooking.cpp \
@@ -17,16 +18,19 @@ SOURCES += \
     menu.cpp \
     rentalcarreservation.cpp \
     trainticket.cpp \
+    travel.cpp \
     travelagency.cpp
 
 HEADERS += \
     booking.h \
+    customer.h \
     editor.h \
     flightbooking.h \
     hotelbooking.h \
     menu.h \
     rentalcarreservation.h \
     trainticket.h \
+    travel.h \
     travelagency.h
 
 FORMS += \

@@ -19,12 +19,12 @@ void Menu::on_readFile_clicked() {
     auto fileName = browser.getOpenFileName(
         this, "Open File", "/Users/tuandl/Qt/QtProjects/BookingGUI", "*.json");
     agency->readFile(fileName);
-    bookings = agency->getBookings();
+    allBookings = agency->getBookings();
 }
 
 void Menu::on_showBookings_clicked() {
-    if (bookings.length() != 0) {
-        for (const auto &b : bookings) {
+    if (allBookings.length() != 0) {
+        for (const auto &b : allBookings) {
             auto *item = new QListWidgetItem;
             item->setText(b->showDetails());
             item->setData(Qt::UserRole, b->getId());

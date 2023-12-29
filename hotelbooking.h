@@ -3,23 +3,25 @@
 
 #include "booking.h"
 
-class HotelBooking : public Booking
-{
+class HotelBooking : public Booking {
 public:
-    HotelBooking(const QString &hotel, const QString &town, const QString &id, double price, const QString &toDate, const QString &fromDate);
+  HotelBooking(const QString &hotel, const QString &town, const QString &id,
+               double price, const QString &toDate, const QString &fromDate,
+const QString &roomType);
 
 private:
-    QString hotel, town;
+  QString hotel, town, roomType;
 
-    // Booking interface
+  // Booking interface
 public:
-    QString showDetails() override;
+  QString showDetails() override;
 
-    // Booking interface
+  // Booking interface
 public:
-    BookingType whoami() const override;
-    QString getHotel() const;
-    QString getTown() const;
+  BookingType whoami() const override;
+  QString getHotel() const;
+  QString getTown() const;
+  QString getRoomType() const;
 };
 
 #endif // HOTELBOOKING_H

@@ -31,15 +31,20 @@ QString TrainTicket::getArrivalTime() const { return arrivalTime; }
 
 QVector<QString> &TrainTicket::getStations() { return stations; }
 
+QString TrainTicket::getBookingClass() const
+{
+  return bookingClass;
+}
+
 TrainTicket::TrainTicket(const QString &fromDest, const QString &toDest,
                          const QString &departureTime,
                          const QString &arrivalTime,
                          const QJsonArray &connectingStations,
                          const QString &id, double price, const QString &toDate,
-                         const QString &fromDate)
+                         const QString &fromDate, const QString &bookingClass)
     : Booking(id, price, toDate, fromDate), fromDest(fromDest), toDest(toDest),
       departureTime(departureTime), arrivalTime(arrivalTime),
-      connectingStations(connectingStations) {
+    bookingClass(bookingClass), connectingStations(connectingStations) {
   for (auto const &s : connectingStations)
     stations.push_back(s.toString());
 }
